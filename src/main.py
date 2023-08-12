@@ -1,13 +1,24 @@
-from utils import get_data, get_required_amount, sort_list, get_date, get_requisites, print_message, get_description, count_payment
+from utils import get_data, sort_list, get_date, get_requisites, count_payment, get_description
 
 file = 'operations.json'
 
 data = get_data('operations.json')
 sorted_list = sort_list(data)
-necessary_transfers = get_required_amount(sorted_list)
-for transfer in necessary_transfers:
+for transfer in sorted_list:
     date = get_date(transfer)
     description = get_description(transfer)
-    requisites = get_requisites(transfer['from'])
-    payment = count_payment(transfer)
-    print(print_message())
+    payment, currency = count_payment(transfer)
+    end_card_name, end_account_number = get_requisites(transfer["to"])
+    if len(transfer.keys()) > 6:
+        initial_card_name, initial_account_number = get_requisites(transfer["from"])
+        print(f'''
+            {date} {description}
+            {initial_card_name} {initial_account_number} -> {end_card_name} {end_account_number}
+            {payment} {currency}
+        ''')
+    else:
+        print(f'''
+            {date} {description}
+            {end_card_name} {end_account_number}
+            {payment} {currency}
+        ''')
