@@ -1,12 +1,13 @@
 from src.utils import get_data, sort_list, get_date, get_requisites, count_payment, get_description
 
+
 def test_get_data():
     assert get_data("data.json") == [{"id": 441945886, "state": "EXECUTED", "date": "2019-08-26T10:50:58.294041"},
                                      {"id": 596171168, "state": "EXECUTED", "date": "2018-07-11T02:26:18.671407"},
                                      {"id": 716496732, "state": "EXECUTED", "date": "2018-04-04T17:33:34.701093"},
                                      {"id": 863064926, "state": "EXECUTED", "date": "2019-12-08T22:46:21.935582"},
                                      {"id": 594226727, "state": "EXECUTED", "date": "2018-09-12T21:27:25.241689"}
-    ]
+                                     ]
 
 
 def test_get_date():
@@ -40,8 +41,16 @@ def test_get_description():
 
 
 def test_sort_list():
-    assert sort_list('data.json') == [{"id": 863064926, "state": "EXECUTED", "date": "2019-12-08T22:46:21.935582"},
-                                     {"id": 441945886, "state": "EXECUTED", "date": "2019-08-26T10:50:58.294041"},
-                                     {"id": 594226727, "state": "EXECUTED", "date": "2018-09-12T21:27:25.241689"},
-                                     {"id": 596171168, "state": "EXECUTED", "date": "2018-07-11T02:26:18.671407"},
-                                     {"id": 716496732, "state": "EXECUTED", "date": "2018-04-04T17:33:34.701093"}]
+    assert sort_list([
+        {
+            "id": 441945886,
+            "state": "EXECUTED",
+            "date": "2019-08-26T10:50:58.294041"
+        },
+        {
+            "id": 596171168,
+            "state": "EXECUTED",
+            "date": "2018-07-11T02:26:18.671407"
+        }
+    ], 3) == [{"id": 441945886, "state": "EXECUTED", "date": "2019-08-26T10:50:58.294041"},
+              {"id": 596171168, "state": "EXECUTED", "date": "2018-07-11T02:26:18.671407"}]
