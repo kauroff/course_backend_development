@@ -2,7 +2,7 @@ from utils import get_data, sort_list, get_date, get_requisites, count_payment, 
 
 file = 'operations.json'
 
-data = get_data('operations.json')
+data = get_data(file)
 sorted_list = sort_list(data)
 for transfer in sorted_list:
     date = get_date(transfer)
