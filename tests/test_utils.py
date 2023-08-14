@@ -6,7 +6,8 @@ def test_get_data():
                                      {"id": 596171168, "state": "EXECUTED", "date": "2018-07-11T02:26:18.671407"},
                                      {"id": 716496732, "state": "EXECUTED", "date": "2018-04-04T17:33:34.701093"},
                                      {"id": 863064926, "state": "EXECUTED", "date": "2019-12-08T22:46:21.935582"},
-                                     {"id": 594226727, "state": "EXECUTED", "date": "2018-09-12T21:27:25.241689"}
+                                     {"id": 594226727, "state": "EXECUTED", "date": "2018-09-12T21:27:25.241689"},
+                                     {"id": 594226727, "state": "CANCELED", "date": "2017-09-12T21:27:25.241689"}
                                      ]
 
 
@@ -23,9 +24,6 @@ def test_get_requisites():
 
 def test_count_payment():
     assert count_payment({
-        "id": 441945886,
-        "state": "EXECUTED",
-        "date": "2019-08-26T10:50:58.294041",
         "operationAmount": {
             "amount": "31957.58",
             "currency": {
@@ -52,5 +50,5 @@ def test_sort_list():
             "state": "EXECUTED",
             "date": "2018-07-11T02:26:18.671407"
         }
-    ], 3) == [{"id": 441945886, "state": "EXECUTED", "date": "2019-08-26T10:50:58.294041"},
+    ], 2) == [{"id": 441945886, "state": "EXECUTED", "date": "2019-08-26T10:50:58.294041"},
               {"id": 596171168, "state": "EXECUTED", "date": "2018-07-11T02:26:18.671407"}]
