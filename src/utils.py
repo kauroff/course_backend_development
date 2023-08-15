@@ -9,10 +9,10 @@ def get_data(file):
 
 def sort_list(data, amount=5):
     new_list = []
-    for index_of_element in range(len(data)):
-        if not data[index_of_element] or data[index_of_element]['state'] != 'EXECUTED':
+    for element in data:
+        if not element or element['state'] != 'EXECUTED':
             continue
-        new_list.append(data[index_of_element])
+        new_list.append(element)
         new_list = sorted(new_list, key=lambda operation: operation['date'], reverse=True)
     return new_list[:amount]
 
